@@ -47,6 +47,9 @@ Binaries/*
 # Builds
 Build/*
 
+# .vs
+.vs/*
+
 # Don't ignore icon files in Build
 !Build/**/*.ico
 
@@ -63,7 +66,5 @@ DerivedDataCache/*
 Content/StarterContent
 
 # Other additional packs
-Content/InfinityBladeFireLands
-Content/InfinityBladeWeapons
-Content/KiteDemo
-Content/PhotoR_Backgrounds
+Content/CraftResourcesIcons
+Content/WaterMill
