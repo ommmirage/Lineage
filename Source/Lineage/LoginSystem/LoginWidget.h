@@ -16,5 +16,5 @@ class LINEAGE_API ULoginWidget : public UUserWidget
 	
 public:
 	UPROPERTY(meta = (BindWidget))
-		class UButton* LogIn;
+		class UButton* LogInBtn;
 };
