@@ -13,8 +13,14 @@ UCLASS()
 class LINEAGE_API ULoginWidget : public UUserWidget
 {
 	GENERATED_BODY()
+
+protected:
+	virtual bool Initialize();
 	
-public:
+private:
 	UPROPERTY(meta = (BindWidget))
 		class UButton* LogInBtn;
+
+	UFUNCTION()
+		void LogIn();
 };
