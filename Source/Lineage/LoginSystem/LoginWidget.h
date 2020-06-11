@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+
 #include "LoginWidget.generated.h"
 
 /**
@@ -20,6 +21,12 @@ protected:
 private:
 	UPROPERTY(meta = (BindWidget))
 		class UButton* LogInBtn;
+
+	UPROPERTY(meta = (BindWidget))
+		class UEditableText* LoginEditableText;
+
+	UPROPERTY(meta = (BindWidget))
+		class UEditableText* PassEditableText;
 
 	UFUNCTION()
 		void LogIn();
