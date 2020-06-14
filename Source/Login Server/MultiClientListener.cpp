@@ -3,7 +3,7 @@
 
 #include "Database.h"
 
-Database db("db.txt");
+Database db;
 
 // Handler for client connections
 void MultiClientListener::onClientConnected(int clientSocket)
@@ -22,12 +22,12 @@ void MultiClientListener::onMessageReceived(int sock, const char* msg, int bytes
 	std::cout << std::string(msg, 0, bytesIn) << std::endl;
 	if (db.checkLoginPassword(msg))
 	{
-		std::cout << "Client entered wrong details." << std::endl;
-		sendToClient(sock, "Wrong username or password.");
+		std::cout << "Client logged in!" << std::endl;
+		sendToClient(sock, "Logged in!");
 	}
 	else
 	{
-		std::cout << "Client logged in!" << std::endl;
-		sendToClient(sock, "Logged in!");
+		std::cout << "Client entered wrong details." << std::endl;
+		sendToClient(sock, "Wrong username or password.");
 	}
 }

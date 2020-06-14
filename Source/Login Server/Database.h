@@ -1,18 +1,15 @@
 #pragma once
 
-#include <fstream>
-#include <set>
-#include <string>
+#include <mysql.h>
 #include <iostream>
-
 
 class Database
 {
 public:
-	Database(std::string filename);
+	Database();
 	bool checkLoginPassword(std::string loginPassword);
 
 private:
-	std::set<std::string> db;
+	MYSQL* conn;
 };
 
