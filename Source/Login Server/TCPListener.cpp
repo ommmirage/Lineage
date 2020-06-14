@@ -105,15 +105,6 @@ int TCPListener::run()
 				else
 				{
 					onMessageReceived(sock, buf, bytesIn);
-					//send(sock, )
-					//for (int i = 0; i < master.fd_count; i++)
-					//{
-					//	SOCKET outSock = master.fd_array[i];
-					//	if (outSock != listening && outSock != sock)
-					//	{
-					//		send(outSock, buf, bytesIn, 0);
-					//	}
-					//}
 				}
 			}
 		}

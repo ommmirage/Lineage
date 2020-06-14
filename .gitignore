@@ -4,6 +4,7 @@ debug/
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
+Source/MySQL/x64/Release/
 
 *.VC.db
 
