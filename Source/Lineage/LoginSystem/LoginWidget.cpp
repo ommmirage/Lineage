@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "LoginWidget.h"
+#include "LineageGameInstance.h"
 
 #include "Components/Button.h"
 #include "Components/EditableText.h"
@@ -76,8 +77,6 @@ void ULoginWidget::LogIn()
 
 	FString loginPass = login + " " + pass;
 
-	UE_LOG(LogTemp, Warning, TEXT("loginPass: %s"), *loginPass);
-
 	if (loginPass.Len() > 1)
 	{
 		std::string loginPassCpp = std::string(TCHAR_TO_UTF8(*loginPass));
@@ -90,17 +89,18 @@ void ULoginWidget::LogIn()
 			int bytesReceived = recv(sock, buf, BUFFER_SIZE, 0);
 			if (bytesReceived > 0)
 			{
-				// Sends character data if login and passwaord are right
+				// Sends character data if login and password is right
 				// Sends "" otherwise
-				std::string response = std::string(buf, 0, bytesReceived);
-				FString res(response.c_str());
-				if (response.length() == 0)
+				std::string character = std::string(buf, 0, bytesReceived);
+				FString FScharacter(character.c_str());
+				if (character.length() == 0)
 				{
 					UE_LOG(LogTemp, Warning, TEXT("Wrong username or password."));
 				}
 				else
 				{
-					UE_LOG(LogTemp, Warning, TEXT("%s"), *res);
+					UE_LOG(LogTemp, Warning, TEXT("%s"), *FScharacter);
+					//GetWorld()->GetGameInstance()->LoadCharacter();
 				}
 			}
 		}
