@@ -7,7 +7,8 @@ class Database
 {
 public:
 	Database();
-	bool checkLoginPassword(std::string loginPassword);
+	std::string checkLoginPassword(std::string loginPassword);
+	std::string getCharacter(std::string login);
 
 private:
 	MYSQL* conn;

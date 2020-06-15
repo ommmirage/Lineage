@@ -5,6 +5,7 @@ debug/
 *.vcxproj.filters
 *.vcxproj.user
 Source/Login Server/x64/Release/
+Source/Login Server/enc_temp_folder/
 
 *.VC.db
 

@@ -90,17 +90,16 @@ void ULoginWidget::LogIn()
 			int bytesReceived = recv(sock, buf, BUFFER_SIZE, 0);
 			if (bytesReceived > 0)
 			{
-				// Echo response to console
+				// Sends character data if login and passwaord are right
+				// Sends "" otherwise
 				std::string response = std::string(buf, 0, bytesReceived);
-
-				// Check if logged in
-				if (!response.compare("Logged in!"))
+				if (response.length() == 0)
 				{
-					UE_LOG(LogTemp, Warning, TEXT("Logged in!"));
+					UE_LOG(LogTemp, Warning, TEXT("Wrong username or password."));
 				}
 				else
 				{
-					UE_LOG(LogTemp, Warning, TEXT("Wrong username or password."));
+					UE_LOG(LogTemp, Warning, TEXT("Logged in!"));
 				}
 			}
 		}

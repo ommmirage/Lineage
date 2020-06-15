@@ -19,11 +19,13 @@ void MultiClientListener::onClientDisconnected(int clientSocket)
 
 void MultiClientListener::onMessageReceived(int sock, const char* msg, int bytesIn)
 {
-	std::cout << std::string(msg, 0, bytesIn) << std::endl;
-	if (db.checkLoginPassword(msg))
+	//std::cout << std::string(msg, 0, bytesIn) << std::endl;
+	std::string login = db.checkLoginPassword(msg);
+	if (login.length() > 0)
 	{
-		std::cout << "Client logged in!" << std::endl;
-		sendToClient(sock, "Logged in!");
+		std::cout << "Client entered right login and password!" << std::endl;
+		std::string character = db.getCharacter(login);
+		sendToClient(sock, "character");
 	}
 	else
 	{
