@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-
+#include "LoginInterface.h"
 #include "LoginWidget.generated.h"
 
 /**
@@ -30,4 +30,6 @@ private:
 
 	UFUNCTION()
 		void LogIn();
+
+	ILoginInterface* LoginInterface;
 };

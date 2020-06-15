@@ -35,8 +35,3 @@ void ULineageGameInstance::LoadLoginWidget()
 
 	PlayerController->bShowMouseCursor = true;
 }
-
-void ULineageGameInstance::LoadCharacter(const FString charData)
-{
-
-}

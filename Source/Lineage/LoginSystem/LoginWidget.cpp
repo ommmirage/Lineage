@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "LoginWidget.h"
-#include "LineageGameInstance.h"
 
 #include "Components/Button.h"
 #include "Components/EditableText.h"
@@ -29,6 +28,10 @@ bool ULoginWidget::Initialize()
 
 void ULoginWidget::LogIn()
 {
+	if (LoginInterface != nullptr)
+	{
+		LoginInterface->LogIn();
+	}
 	// Server IP and listening port
 	std::string serverIP = "127.0.0.1";
 	int port = 54000;
