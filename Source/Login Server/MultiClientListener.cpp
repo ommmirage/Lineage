@@ -25,11 +25,11 @@ void MultiClientListener::onMessageReceived(int sock, const char* msg, int bytes
 	{
 		std::cout << "Client entered right login and password!" << std::endl;
 		std::string character = db.getCharacter(login);
-		sendToClient(sock, "character");
+		sendToClient(sock, character);
 	}
 	else
 	{
 		std::cout << "Client entered wrong details." << std::endl;
-		sendToClient(sock, "Wrong username or password.");
+		sendToClient(sock, "");
 	}
 }

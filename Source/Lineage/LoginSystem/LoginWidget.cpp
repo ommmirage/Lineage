@@ -93,13 +93,14 @@ void ULoginWidget::LogIn()
 				// Sends character data if login and passwaord are right
 				// Sends "" otherwise
 				std::string response = std::string(buf, 0, bytesReceived);
+				FString res(response.c_str());
 				if (response.length() == 0)
 				{
 					UE_LOG(LogTemp, Warning, TEXT("Wrong username or password."));
 				}
 				else
 				{
-					UE_LOG(LogTemp, Warning, TEXT("Logged in!"));
+					UE_LOG(LogTemp, Warning, TEXT("%s"), *res);
 				}
 			}
 		}
