@@ -4,13 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "LoginSystem/LoginInterface.h"
 #include "LineageGameInstance.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class LINEAGE_API ULineageGameInstance : public UGameInstance
+class LINEAGE_API ULineageGameInstance : public UGameInstance, public ILoginInterface
 {
 	GENERATED_BODY()
 
@@ -21,6 +22,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 		void LoadLoginWidget();
+
+	void LogIn();
 
 private:
 	// We make a forward declaration of UUserWidget by writing "class" word before it

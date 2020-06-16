@@ -26,6 +26,11 @@ bool ULoginWidget::Initialize()
 	return true;
 }
 
+void ULoginWidget::SetLoginInterface(ILoginInterface* _LoginInterface)
+{
+	this->LoginInterface = _LoginInterface;
+}
+
 void ULoginWidget::LogIn()
 {
 	if (LoginInterface != nullptr)

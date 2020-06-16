@@ -15,6 +15,9 @@ class LINEAGE_API ULoginWidget : public UUserWidget
 {
 	GENERATED_BODY()
 
+public:
+	void SetLoginInterface(ILoginInterface* _LoginInterface);
+
 protected:
 	virtual bool Initialize();
 	

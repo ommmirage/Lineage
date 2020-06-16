@@ -5,6 +5,8 @@
 #include "Blueprint/UserWidget.h"
 #include "UObject/ConstructorHelpers.h"
 
+#include "LoginSystem/LoginWidget.h"
+
 ULineageGameInstance::ULineageGameInstance(const FObjectInitializer& ObjectInitializer)
 {
 	ConstructorHelpers::FClassFinder<UUserWidget> LoginWidgetBPClass(TEXT("/Game/Login/WBP_Login"));
@@ -19,7 +21,7 @@ void ULineageGameInstance::ULineageGameInstance::Init()
 
 void ULineageGameInstance::LoadLoginWidget()
 {
-	UUserWidget* LoginWidget = CreateWidget<UUserWidget>(this, LoginWidgetClass);
+	ULoginWidget* LoginWidget = CreateWidget<ULoginWidget>(this, LoginWidgetClass);
 	if (!ensure(LoginWidget != nullptr)) return;
 
 	LoginWidget->AddToViewport();
@@ -34,4 +36,11 @@ void ULineageGameInstance::LoadLoginWidget()
 	PlayerController->SetInputMode(InputModeData);
 
 	PlayerController->bShowMouseCursor = true;
+
+	LoginWidget->SetLoginInterface(this);
+}
+
+void ULineageGameInstance::ULineageGameInstance::LogIn()
+{
+
 }
