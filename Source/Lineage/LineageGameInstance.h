@@ -23,7 +23,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void LoadLoginWidget();
 
-	void LogIn();
+	void LogIn(FString loginPass);
 
 private:
 	// We make a forward declaration of UUserWidget by writing "class" word before it

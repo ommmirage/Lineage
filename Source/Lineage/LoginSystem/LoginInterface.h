@@ -23,5 +23,5 @@ class LINEAGE_API ILoginInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	// We have to make it pure virtual function to compile
-	virtual void LogIn() = 0;
+	virtual void LogIn(FString loginPass) = 0;
 };
