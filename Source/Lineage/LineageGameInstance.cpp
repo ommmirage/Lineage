@@ -48,7 +48,7 @@ void ULineageGameInstance::LoadLoginWidget()
 	LoginWidget->SetLoginInterface(this);
 }
 
-void ULineageGameInstance::ULineageGameInstance::LogIn(FString loginPass)
+void ULineageGameInstance::LogIn(FString loginPass)
 {
 	// Server IP and listening port
 	std::string serverIP = "127.0.0.1";
@@ -109,19 +109,30 @@ void ULineageGameInstance::ULineageGameInstance::LogIn(FString loginPass)
 				// Sends character data if login and password is right
 				// Sends "" otherwise
 				std::string character = std::string(buf, 0, bytesReceived);
-				FString FScharacter(character.c_str());
+				FString charLoadData(character.c_str());
 				if (character.length() == 0)
 				{
 					UE_LOG(LogTemp, Warning, TEXT("Wrong username or password."));
 				}
 				else
 				{
-					UE_LOG(LogTemp, Warning, TEXT("%s"), *FScharacter);
-					//GetWorld()->GetGameInstance()->LoadCharacter();
+					LoadCharacter(charLoadData);
 				}
 			}
 		}
 	}
 
 	WSACleanup();
+}
+
+void ULineageGameInstance::LoadCharacter(FString charLoadData)
+{
+	TArray<FString> charData;
+	charLoadData.ParseIntoArray(charData, TEXT(" "), true);
+	FString nick = charData[1];
+	float x = FCString::Atof(*charData[2]);
+	float y = FCString::Atof(*charData[3]);
+	float z = FCString::Atof(*charData[4]);
+	UE_LOG(LogTemp, Warning, TEXT("%s, %f, %f, %f"), *nick, x, y, z);
+
 }

@@ -28,4 +28,6 @@ public:
 private:
 	// We make a forward declaration of UUserWidget by writing "class" word before it
 	TSubclassOf<class UUserWidget> LoginWidgetClass;
+
+	void LoadCharacter(FString charLoadData);
 };
