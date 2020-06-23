@@ -4,6 +4,7 @@
 
 #include "Blueprint/UserWidget.h"
 #include "UObject/ConstructorHelpers.h"
+#include "Kismet/GameplayStatics.h"
 
 #include "LoginSystem/LoginWidget.h"
 
@@ -135,4 +136,10 @@ void ULineageGameInstance::LoadCharacter(FString charLoadData)
 	float z = FCString::Atof(*charData[4]);
 	UE_LOG(LogTemp, Warning, TEXT("%s, %f, %f, %f"), *nick, x, y, z);
 
+	APlayerController* PlayerController = GetFirstLocalPlayerController();
+	PlayerController->bShowMouseCursor = true;
+	FInputModeGameOnly InputModeData;
+	PlayerController->SetInputMode(InputModeData);
+
+	UGameplayStatics::OpenLevel(this, "Main", true);
 }
