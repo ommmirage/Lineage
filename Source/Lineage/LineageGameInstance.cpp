@@ -5,6 +5,7 @@
 #include "Blueprint/UserWidget.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Kismet/GameplayStatics.h"
+#include "LineagePlayerController.h" // TODO get rid of double inheritance
 
 #include "LoginSystem/LoginWidget.h"
 
@@ -18,14 +19,13 @@
 
 ULineageGameInstance::ULineageGameInstance(const FObjectInitializer& ObjectInitializer)
 {
-	ConstructorHelpers::FClassFinder<UUserWidget> LoginWidgetBPClass(TEXT("/Game/Login/WBP_Login"));
+	ConstructorHelpers::FClassFinder<UUserWidget> LoginWidgetBPClass(TEXT("/Game/UI/WBP_Login"));
 	if (!ensure(LoginWidgetBPClass.Class != nullptr)) return;
 	LoginWidgetClass = LoginWidgetBPClass.Class;
 }
 
 void ULineageGameInstance::ULineageGameInstance::Init()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Found class %s"), *LoginWidgetClass->GetName());
 }
 
 void ULineageGameInstance::LoadLoginWidget()
@@ -124,6 +124,10 @@ void ULineageGameInstance::LogIn(FString loginPass)
 	}
 
 	WSACleanup();
+}
+
+void ULineageGameInstance::LevelLoaded()
+{
 }
 
 void ULineageGameInstance::LoadCharacter(FString charLoadData)
