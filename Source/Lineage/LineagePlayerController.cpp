@@ -2,7 +2,6 @@
 
 
 #include "LineagePlayerController.h"
-//#include "LineageGameInstance.h" // TODO get rid of double inheritance
 #include "Kismet/GameplayStatics.h"
 
 void ALineagePlayerController::BeginPlay()
@@ -23,16 +22,21 @@ void ALineagePlayerController::LoadCharacter(FString charLoadData)
 	FVector location = FVector(x, y, z);
 	UE_LOG(LogTemp, Warning, TEXT("%s, %f, %f, %f"), *nick, x, y, z);
 
-	// Set game input mode
-	//APlayerController* PlayerController = GetFirstLocalPlayerController();
-	//PlayerController->bShowMouseCursor = true;
-	//FInputModeGameOnly InputModeData;
-	//PlayerController->SetInputMode(InputModeData);
+	//Set game input mode
+	bShowMouseCursor = true;
+	FInputModeGameOnly InputModeData;
+	SetInputMode(InputModeData);
 
-	//UGameplayStatics::OpenLevel(this, "Main", true);
+	UGameplayStatics::OpenLevel(this, "Main", true);
 
-	//// Spawn a character
+	// Spawn a character
 	//FActorSpawnParameters SpawnParams;
+	//Possess(GetWorld()->SpawnActor<APawn>(CharacterToSpawn, location, FRotator(), SpawnParams));
+}
 
-	//GetWorld()->SpawnActor<APawn>(CharacterToSpawn, location, FRotator(), SpawnParams);
+void ALineagePlayerController::SpawnCharacter()
+{
+	//UE_LOG(LogTemp, Warning, TEXT("CharacterToSpawn %f"), CharacterToSpawn.GetActorLocation().x);
+	FActorSpawnParameters SpawnParams;
+	Possess(GetWorld()->SpawnActor<APawn>(CharacterToSpawn, FVector(), FRotator(), SpawnParams));
 }

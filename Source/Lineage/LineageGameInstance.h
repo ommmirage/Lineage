@@ -16,12 +16,6 @@ class LINEAGE_API ULineageGameInstance : public UGameInstance, public ILoginInte
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditDefaultsOnly, Category = "Load Character")
-		TSubclassOf<APawn> CharacterToSpawn;
-
-	//UPROPERTY(EditDefaultsOnly, Category = "Load Character")
-	//	TSubclassOf<ALineagePlayerController> LineagePlayerController;
-
 	ULineageGameInstance(const FObjectInitializer& ObjectInitializer);
 
 	virtual void Init();
