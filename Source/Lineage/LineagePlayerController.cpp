@@ -38,5 +38,5 @@ void ALineagePlayerController::SpawnCharacter()
 {
 	//UE_LOG(LogTemp, Warning, TEXT("CharacterToSpawn %f"), CharacterToSpawn.GetActorLocation().x);
 	FActorSpawnParameters SpawnParams;
-	Possess(GetWorld()->SpawnActor<APawn>(CharacterToSpawn, FVector(), FRotator(), SpawnParams));
+	Possess(GetWorld()->SpawnActor<APawn>(CharacterToSpawn, FVector(0.f, 0.f, 400.f), FRotator(), SpawnParams));
 }
