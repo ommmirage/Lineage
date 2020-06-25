@@ -7,15 +7,21 @@
 #include "LoginSystem/LoginInterface.h"
 #include "LineageGameInstance.generated.h"
 
-/**
- * 
- */
+
+class ALineagePlayerController;
+
 UCLASS()
 class LINEAGE_API ULineageGameInstance : public UGameInstance, public ILoginInterface
 {
 	GENERATED_BODY()
 
 public:
+	UPROPERTY(EditDefaultsOnly, Category = "Load Character")
+		TSubclassOf<APawn> CharacterToSpawn;
+
+	//UPROPERTY(EditDefaultsOnly, Category = "Load Character")
+	//	TSubclassOf<ALineagePlayerController> LineagePlayerController;
+
 	ULineageGameInstance(const FObjectInitializer& ObjectInitializer);
 
 	virtual void Init();
@@ -27,9 +33,9 @@ public:
 
 	void LevelLoaded();
 
+
 private:
 	// We make a forward declaration of UUserWidget by writing "class" word before it
 	TSubclassOf<class UUserWidget> LoginWidgetClass;
 
-	void LoadCharacter(FString charLoadData);
 };

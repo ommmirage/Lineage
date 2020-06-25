@@ -16,4 +16,6 @@ class LINEAGE_API ALineagePlayerController : public APlayerController
 	
 public:
 	virtual void BeginPlay();
+
+	void LoadCharacter(FString charLoadData);
 };

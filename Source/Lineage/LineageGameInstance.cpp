@@ -5,7 +5,8 @@
 #include "Blueprint/UserWidget.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Kismet/GameplayStatics.h"
-#include "LineagePlayerController.h" // TODO get rid of double inheritance
+#include "LineagePlayerController.h"
+#include "Templates/Casts.h"
 
 #include "LoginSystem/LoginWidget.h"
 
@@ -41,9 +42,7 @@ void ULineageGameInstance::LoadLoginWidget()
 	FInputModeUIOnly InputModeData;
 	InputModeData.SetWidgetToFocus(LoginWidget->TakeWidget());
 	InputModeData.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
-
 	PlayerController->SetInputMode(InputModeData);
-
 	PlayerController->bShowMouseCursor = true;
 
 	LoginWidget->SetLoginInterface(this);
@@ -117,7 +116,8 @@ void ULineageGameInstance::LogIn(FString loginPass)
 				}
 				else
 				{
-					LoadCharacter(charLoadData);
+					ALineagePlayerController* LineagePlayerController = Cast<ALineagePlayerController>(GetFirstLocalPlayerController());
+					LineagePlayerController->LoadCharacter(charLoadData);
 				}
 			}
 		}
@@ -128,22 +128,4 @@ void ULineageGameInstance::LogIn(FString loginPass)
 
 void ULineageGameInstance::LevelLoaded()
 {
-}
-
-void ULineageGameInstance::LoadCharacter(FString charLoadData)
-{
-	TArray<FString> charData;
-	charLoadData.ParseIntoArray(charData, TEXT(" "), true);
-	FString nick = charData[1];
-	float x = FCString::Atof(*charData[2]);
-	float y = FCString::Atof(*charData[3]);
-	float z = FCString::Atof(*charData[4]);
-	UE_LOG(LogTemp, Warning, TEXT("%s, %f, %f, %f"), *nick, x, y, z);
-
-	APlayerController* PlayerController = GetFirstLocalPlayerController();
-	PlayerController->bShowMouseCursor = true;
-	FInputModeGameOnly InputModeData;
-	PlayerController->SetInputMode(InputModeData);
-
-	UGameplayStatics::OpenLevel(this, "Main", true);
 }
