@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "Characters/CharacterBase.h"
 #include "LineagePlayerController.generated.h"
 
 /**
@@ -18,10 +19,12 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Load Character")
 		TSubclassOf<APawn> CharacterToSpawn;
 
-	virtual void BeginPlay();
-
 	void LoadCharacter(FString charLoadData);
 
 	UFUNCTION(BlueprintCallable)
 	void SpawnCharacter();
+
+private:
+	ACharacterBase* Char = nullptr;
+
 };

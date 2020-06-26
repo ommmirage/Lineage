@@ -29,6 +29,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player")
 		class UStaticMeshComponent* StaticMeshComp;
 
+	FVector location;
+	FString nick;
+
 protected:
 	void MoveForward(float Value);
 	void MoveRight(float Value);
