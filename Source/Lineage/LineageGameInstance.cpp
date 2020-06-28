@@ -117,10 +117,10 @@ void ULineageGameInstance::LogIn(FString loginPass)
 				else
 				{
 					ALineagePlayerController* LineagePlayerController = Cast<ALineagePlayerController>(GetFirstLocalPlayerController());
-					//LineagePlayerController->LoadCharacter(charLoadData);
 					LineagePlayerController->bShowMouseCursor = true;
 					FInputModeGameOnly InputModeData;
 					LineagePlayerController->SetInputMode(InputModeData);
+					//UE_LOG(LogTemp, Warning, TEXT("charLoadData: %s"), charLoadData);
 					UGameplayStatics::OpenLevel(this, "Main", true, charLoadData);
 				}
 			}

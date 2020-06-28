@@ -19,10 +19,8 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Load Character")
 		TSubclassOf<APawn> CharacterToSpawn;
 
-	void LoadCharacter(FString charLoadData);
-
 	UFUNCTION(BlueprintCallable)
-	void SpawnCharacter();
+	void SpawnCharacter(FString charLoadData);
 
 private:
 	ACharacterBase* Char = nullptr;
