@@ -17,10 +17,13 @@ void ALineagePlayerController::SpawnCharacter(FString charLoadData)
 	float z = FCString::Atof(*charData[4]);
 
 	FActorSpawnParameters SpawnParams;
-	Possess(GetWorld()->SpawnActor<APawn>(
+	Char = GetWorld()->SpawnActor<ACharacterBase>(
 		CharacterToSpawn,
 		FVector(x, y, z),
 		FRotator(),
 		SpawnParams
-		));
+		);
+	Possess(Char);
+
+	Char->SetActorLocation(FVector(0.f, 0.f, 400.f));
 }

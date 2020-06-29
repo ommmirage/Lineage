@@ -130,6 +130,6 @@ void ULineageGameInstance::LogIn(FString loginPass)
 	WSACleanup();
 }
 
-void ULineageGameInstance::LevelLoaded()
+void ULineageGameInstance::LoadObjects()
 {
 }

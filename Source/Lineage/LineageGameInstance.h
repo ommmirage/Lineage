@@ -25,7 +25,8 @@ public:
 
 	void LogIn(FString loginPass);
 
-	void LevelLoaded();
+	UFUNCTION(BlueprintCallable)
+	void LoadObjects();
 
 
 private:
