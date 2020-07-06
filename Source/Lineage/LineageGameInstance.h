@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
 #include "LoginSystem/LoginInterface.h"
+
+#include "Client-Server/TCPModule.h"
+
 #include "LineageGameInstance.generated.h"
 
 
@@ -25,6 +28,8 @@ public:
 
 	void LogIn(FString loginPass);
 
+	void onCharDataReceived(FString charData);
+
 	UFUNCTION(BlueprintCallable)
 	void LoadObjects();
 
@@ -32,5 +37,5 @@ public:
 private:
 	// We make a forward declaration of UUserWidget by writing "class" word before it
 	TSubclassOf<class UUserWidget> LoginWidgetClass;
-
+	TCPModule TCP;
 };

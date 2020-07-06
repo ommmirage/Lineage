@@ -20,7 +20,10 @@ public:
 		TSubclassOf<APawn> CharacterToSpawn;
 
 	UFUNCTION(BlueprintCallable)
-	void SpawnCharacter(FString charLoadData);
+		void SpawnCharacter(FString charLoadData);
+
+	UFUNCTION(BlueprintCallable)
+		void GetInventoryData();
 
 private:
 	ACharacterBase* Char = nullptr;

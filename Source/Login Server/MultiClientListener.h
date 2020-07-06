@@ -1,5 +1,6 @@
 #pragma once
 #include "TCPListener.h"
+#include "Database.h"
 
 class MultiClientListener : public TCPListener
 {
@@ -10,6 +11,8 @@ public:
 	{
 
 	}
+
+	Database db;
 
 protected:
 

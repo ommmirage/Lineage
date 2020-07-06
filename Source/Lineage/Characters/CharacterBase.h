@@ -29,8 +29,7 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Player")
 		class UStaticMeshComponent* StaticMeshComp;
 
-	FVector location;
-	FString nick;
+	
 
 protected:
 	void MoveForward(float Value);
@@ -44,6 +43,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Camera")
 		float BaseLookUpRate;
 
-private:
+public:
+	FVector Location;
+	FString Nick;
 	TArray<FSlot> Slots;
 };

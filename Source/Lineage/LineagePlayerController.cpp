@@ -24,6 +24,10 @@ void ALineagePlayerController::SpawnCharacter(FString charLoadData)
 		SpawnParams
 		);
 	Possess(Char);
+}
 
-	Char->SetActorLocation(FVector(0.f, 0.f, 400.f));
+void ALineagePlayerController::GetInventoryData()
+{
+	if (Char == nullptr) return;
+
 }

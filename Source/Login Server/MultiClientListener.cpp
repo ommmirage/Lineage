@@ -1,10 +1,6 @@
 #include "MultiClientListener.h"
 #include <string>
 
-#include "Database.h"
-
-Database db;
-
 // Handler for client connections
 void MultiClientListener::onClientConnected(int clientSocket)
 {
