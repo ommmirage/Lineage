@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "../Structs/Slot.h"
 #include "CharacterBase.generated.h"
-
 
 
 UCLASS()
@@ -43,4 +43,7 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Camera")
 		float BaseLookUpRate;
+
+private:
+	TArray<FSlot> Slots;
 };
