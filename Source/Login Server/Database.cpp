@@ -72,7 +72,7 @@ std::string Database::getCharacter(std::string login)
 				character << row[1] << " " << row[2] << " " << row[15] << " " << row[16];
 				character << " " << row[17];
 			}
-			std::cout << character.str() << std::endl;
+			std::cout << "Database gave a string: " << character.str() << std::endl;
 			
 			return character.str();
 		}

@@ -8,6 +8,7 @@ Database db;
 // Handler for client connections
 void MultiClientListener::onClientConnected(int clientSocket)
 {
+	std::cout << std::endl;
 	std::cout << "Client with socket #" << clientSocket << " connected." << std::endl;
 }
 

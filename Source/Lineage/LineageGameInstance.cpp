@@ -106,8 +106,8 @@ void ULineageGameInstance::LogIn(FString loginPass)
 			int bytesReceived = recv(sock, buf, BUFFER_SIZE, 0);
 			if (bytesReceived > 0)
 			{
-				// Sends character data if login and password is right
-				// Sends "" otherwise
+				// Gets character data if login and password is right
+				// Gets "" otherwise
 				std::string character = std::string(buf, 0, bytesReceived);
 				FString charLoadData(character.c_str());
 				if (character.length() == 0)
@@ -132,4 +132,5 @@ void ULineageGameInstance::LogIn(FString loginPass)
 
 void ULineageGameInstance::LoadObjects()
 {
+
 }
