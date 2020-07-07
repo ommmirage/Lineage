@@ -4,6 +4,7 @@
 #include "LineagePlayerController.h"
 #include "Kismet/GameplayStatics.h"
 
+#include "Structs/Slot.h"
 
 
 void ALineagePlayerController::SpawnCharacter(FString charLoadData)
@@ -24,10 +25,15 @@ void ALineagePlayerController::SpawnCharacter(FString charLoadData)
 		SpawnParams
 		);
 	Possess(Char);
-}
 
-void ALineagePlayerController::GetInventoryData()
-{
-	if (Char == nullptr) return;
-
+	// Load inventory
+	// i = 5 because float z = FCString::Atof(*charData[4]);
+	for (int i = 5; i < charData.Num(); i += 3)
+	{
+		FSlot s;
+		s.objectId = FCString::Atoi(*charData[i]);
+		s.itemId = FCString::Atoi(*charData[i + 1]);
+		s.amount = FCString::Atoi(*charData[i + 2]);
+		Char->slots.Add(s);
+	}
 }

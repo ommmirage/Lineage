@@ -58,6 +58,11 @@ std::string Database::getCharacter(std::string login)
 	{
 		puts("Successful connection to database!");
 
+		std::ostringstream charData{};
+		std::string id;
+
+		// Get id, nick and location
+
 		std::string query = "SELECT * FROM characters WHERE account_name = '" + login + "'";
 		const char* q = query.c_str();
 		int qstate = mysql_query(conn, q);
@@ -65,16 +70,37 @@ std::string Database::getCharacter(std::string login)
 		if (!qstate)
 		{
 			MYSQL_RES* res = mysql_store_result(conn);
-			std::ostringstream character{};
 
 			while (row = mysql_fetch_row(res))
 			{
-				character << row[1] << " " << row[2] << " " << row[15] << " " << row[16];
-				character << " " << row[17];
+				id = row[1];
+				charData << row[1] << " " << row[2] << " " << row[15] << " " << row[16];
+				charData << " " << row[17];
 			}
-			std::cout << "Database gave a string: " << character.str() << std::endl;
-			
-			return character.str();
+
+			// Get inventory
+
+			query = "SELECT * FROM items WHERE owner_id = " + id;
+			const char* q1 = query.c_str();
+			qstate = mysql_query(conn, q1);
+
+			if (!qstate)
+			{
+				res = mysql_store_result(conn);
+
+				while (row = mysql_fetch_row(res))
+				{
+					charData << " " << row[1] << " " << row[2] << " " << row[3];
+				}
+
+				std::cout << "Database gave a string: " << charData.str() << std::endl;
+
+				return charData.str();
+			}
+			else
+			{
+				std::cout << "Query failed: " << mysql_error(conn) << std::endl;
+			}
 		}
 		else
 		{

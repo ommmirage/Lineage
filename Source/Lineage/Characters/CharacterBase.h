@@ -44,7 +44,9 @@ protected:
 		float BaseLookUpRate;
 
 public:
-	FVector Location;
-	FString Nick;
-	TArray<FSlot> Slots;
+	FVector location;
+	FString nick;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TArray<FSlot> slots;
 };

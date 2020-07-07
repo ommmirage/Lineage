@@ -22,9 +22,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void SpawnCharacter(FString charLoadData);
 
-	UFUNCTION(BlueprintCallable)
-		void GetInventoryData();
-
 private:
 	ACharacterBase* Char = nullptr;
 

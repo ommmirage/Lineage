@@ -1,14 +1,20 @@
 #pragma once
 
-#include "../Items/MasterItem.h"
 #include "Slot.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FSlot {
 
-	GENERATED_USTRUCT_BODY()
+	GENERATED_BODY()
 
-	AMasterItem* Item;
-	int Amount;
+public:
+	UPROPERTY(BlueprintReadWrite)
+		int objectId;
+
+	UPROPERTY(BlueprintReadWrite)
+		int itemId;
+
+	UPROPERTY(BlueprintReadWrite)
+		int amount;
 
 };
