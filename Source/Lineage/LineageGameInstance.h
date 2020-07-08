@@ -28,8 +28,6 @@ public:
 
 	void LogIn(FString loginPass);
 
-	void onCharDataReceived(FString charData);
-
 	UFUNCTION(BlueprintCallable)
 	void LoadObjects();
 

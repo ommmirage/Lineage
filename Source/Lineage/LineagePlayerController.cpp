@@ -6,7 +6,6 @@
 
 #include "Structs/Slot.h"
 
-
 void ALineagePlayerController::SpawnCharacter(FString charLoadData)
 {
 	// Prepare data to load a character
@@ -36,4 +35,10 @@ void ALineagePlayerController::SpawnCharacter(FString charLoadData)
 		s.amount = FCString::Atoi(*charData[i + 2]);
 		Char->slots.Add(s);
 	}
+
+	// Set input mode
+	FInputModeGameAndUI InputModeData;
+	InputModeData.SetHideCursorDuringCapture(false);
+	SetInputMode(InputModeData);
+	bShowMouseCursor = true;
 }

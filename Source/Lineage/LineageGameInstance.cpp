@@ -33,7 +33,7 @@ void ULineageGameInstance::LoadLoginWidget()
 
 	FInputModeUIOnly InputModeData;
 	InputModeData.SetWidgetToFocus(LoginWidget->TakeWidget());
-	InputModeData.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+	//InputModeData.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
 	PlayerController->SetInputMode(InputModeData);
 	PlayerController->bShowMouseCursor = true;
 
@@ -65,7 +65,7 @@ void ULineageGameInstance::LogIn(FString loginPass)
 				}
 				else
 				{
-					onCharDataReceived(charData);
+					UGameplayStatics::OpenLevel(this, "Main", true, charData);
 				}
 			}
 		}
@@ -73,16 +73,6 @@ void ULineageGameInstance::LogIn(FString loginPass)
 
 	WSACleanup();
 }
-
-void ULineageGameInstance::onCharDataReceived(FString charData)
-{
-	ALineagePlayerController* LineagePlayerController = Cast<ALineagePlayerController>(GetFirstLocalPlayerController());
-	LineagePlayerController->bShowMouseCursor = true;
-	FInputModeGameOnly InputModeData;
-	LineagePlayerController->SetInputMode(InputModeData);
-	UGameplayStatics::OpenLevel(this, "Main", true, charData);
-}
-
 
 void ULineageGameInstance::LoadObjects()
 {
